@@ -53,6 +53,7 @@ pub struct GroupSpec {
     pub usage_page: Option<u32>,
     pub collection: Option<u32>,
     pub logical_min: Option<u32>,
+    pub logical_max: Option<u32>,
     pub unit_exponent: Option<u32>,
 
     // Local items
@@ -133,6 +134,10 @@ impl GroupSpec {
             }
             "logical_min" => {
                 self.logical_min = Some(val);
+                Ok(())
+            }
+            "logical_max" => {
+                self.logical_max = Some(val);
                 Ok(())
             }
             _ => Err(parse::Error::new(
